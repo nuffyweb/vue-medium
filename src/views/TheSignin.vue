@@ -4,17 +4,9 @@
             <div class="col-md-6 offset-md-3 col-xs-12">
                 <h1 class="text-xs-center">Sign in</h1>
                 <p class="text-xs-center">
-                    <a href="#/register" class="ng-hide"> Have an account? </a>
+                    <a href="" class="ng-hide"> Have an account? </a>
                 </p>
-                <!-- TODO сделать отдельный компонент -->
-                <div
-                    class="invalid-feedback"
-                    v-bind:class="{ active: hasErrors }"
-                    v-if="hasErrors"
-                >
-                    {{ getMessage(hasErrors) }}
-                </div>
-
+                <AppValidationErrors :validation-errors="hasErrors" v-if="hasErrors"/>
                 <form @submit.prevent="onSubmitSignup">
                     <fieldset>
                         <fieldset class="form-group has-validation">
@@ -50,6 +42,7 @@
 </template>
 <script>
     import stringifyArr from '@/mixins/stringifyArr.js';
+    import AppValidationErrors from '@/components/ValidationErrors';
     import {mapState} from 'vuex';
     export default {
         data() {
@@ -61,6 +54,9 @@
             };
         },
         name: 'TheSignin',
+        components: {
+            AppValidationErrors,
+        },
         mixins: [stringifyArr],
         computed: {
             ...mapState({
@@ -78,13 +74,6 @@
                 this.$store.dispatch('auth/login', this.oFormData).then(() => {
                     this.$router.push({name: 'Home'});
                 });
-            },
-            // TODO сделать отдельный компонент
-            getMessage(errors) {
-                return Object.keys(errors).map((name) => {
-                    const message = errors[name].join(', ');
-                    return `${name} ${message}`;
-                })[0];
             },
         },
     };

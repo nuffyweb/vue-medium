@@ -11,7 +11,6 @@ const routes = [
         component: Home,
         meta: {
             layout: 'main',
-            auth: true,
         },
     },
     {
@@ -30,6 +29,54 @@ const routes = [
         },
         component: () => import('@/views/TheSignin'),
     },
+    {
+        path: '/settings',
+        name: 'Settings',
+        meta: {
+            layout: 'main',
+        },
+        component: Home,
+    },
+    {
+        path: '/profile/:slug',
+        name: 'UserProfile',
+        meta: {
+            layout: 'main',
+        },
+        component: Home,
+    },
+    {
+        path: '/profile/:slug/favorites',
+        name: 'UserProfileFavorites',
+        meta: {
+            layout: 'main',
+        },
+        component: Home,
+    },
+    {
+        path: '/article/new',
+        name: 'ArticleCreate',
+        meta: {
+            layout: 'main',
+        },
+        component: Home,
+    },
+    {
+        path: '/article/:slug',
+        name: 'Article',
+        meta: {
+            layout: 'main',
+        },
+        component: Home,
+    },
+    {
+        path: '/article/:slug/edit',
+        name: 'ArticleEdit',
+        meta: {
+            layout: 'main',
+        },
+        component: Home,
+    },
 ];
 
 const router = new VueRouter({
@@ -40,13 +87,12 @@ const router = new VueRouter({
     linkExactActiveClass: 'exact-active',
 });
 // router.beforeEach((to, from, next) => {
-//     const userLoggedIn = this.store.dispatch('auth/getCurrentUser');
-//     if (to.meta.auth && userLoggedIn) {
-//         next('/login')
+//     const userLoggedIn = store.dispatch('auth/getCurrentUser');
+//     if (to.name !== 'TheSignin' && userLoggedIn) {
+//         next('/login');
 //     }
 //     else {
-//         next()
+//         next();
 //     }
-// },
+// });
 export default router;
-//store.dispatch('auth/getCurrentUser');

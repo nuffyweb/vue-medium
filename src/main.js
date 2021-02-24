@@ -4,11 +4,11 @@ import App from '@/App';
 import router from '@/router';
 import store from '@/store';
 import i18n from '@/i18n';
-
+import DateFilter from '@/filters/date.filter';
 import '@/config';
 
 Vue.config.productionTip = false;
-
+Vue.filter('date', DateFilter);
 new Vue({
     router,
     store,

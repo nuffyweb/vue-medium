@@ -25,7 +25,7 @@ const actions = {
             authService.register(credentials)
                 .then(response => {
                     console.log(response);
-                    context.commit('REGISTER_SECCESS', response.data.user);
+                    context.commit('REGISTER_SUCCESS', response.data.user);
                     setItem('accessToken', response.data.user.token);
                     resolve(response.data.user);
                 })
@@ -42,7 +42,7 @@ const actions = {
             authService.login(credentials)
                 .then(response => {
                     console.log(response);
-                    context.commit('LOGIN_SECCESS', response.data.user);
+                    context.commit('LOGIN_SUCCESS', response.data.user);
                     setItem('accessToken', response.data.user.token);
                     resolve(response.data.user);
                 })
@@ -60,7 +60,7 @@ const actions = {
             userService.getCurrentUser()
                 .then(response => {
                     console.log(response);
-                    context.commit('GET_CURRENT_USER_SECCESS', response.data.user);
+                    context.commit('GET_CURRENT_USER_SUCCESS', response.data.user);
                     resolve(response.data.user);
                 })
                 .catch((err) => {
@@ -77,7 +77,7 @@ const mutations = {
         state.isSubmitting = true;
         state.validationErrors = null;
     },
-    REGISTER_SECCESS(state, payload) {
+    REGISTER_SUCCESS(state, payload) {
         state.isSubmitting = false;
         state.currentUser = payload;
         state.isLoggedIn = true;
@@ -90,7 +90,7 @@ const mutations = {
         state.isSubmitting = true;
         state.validationErrors = null;
     },
-    LOGIN_SECCESS(state, payload) {
+    LOGIN_SUCCESS(state, payload) {
         state.isSubmitting = false;
         state.currentUser = payload;
         state.isLoggedIn = true;
@@ -106,7 +106,7 @@ const mutations = {
     GET_CURRENT_USER_START(state) {
         state.isLoading = true;
     },
-    GET_CURRENT_USER_SECCESS(state, payload) {
+    GET_CURRENT_USER_SUCCESS(state, payload) {
         state.isLoading = false;
         state.currentUser = payload;
         state.isLoggedIn = true;

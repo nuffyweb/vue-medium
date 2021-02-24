@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import dateFilter from '@/filters/date.filter.js';
-// import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
+import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
 // /* eslint-disable import/no-extraneous-dependencies */
-// import 'bootstrap/dist/css/bootstrap.css';
-// import 'bootstrap-vue/dist/bootstrap-vue.css';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 // /* eslint-enable import/no-extraneous-dependencies */
 import '@/assets/scss/app.scss';
 
@@ -29,3 +30,5 @@ Vue.component('base-layout', EmptyLayout);
 // import '@/registerServiceWorker';
 Vue.filter('currency', currency);
 Vue.use(Fragment.Plugin);
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);

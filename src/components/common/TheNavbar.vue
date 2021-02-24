@@ -25,6 +25,7 @@
                                 class="nav-link"
                                 aria-current="page"
                                 href="#">
+                                <b-icon icon="house"></b-icon>
                                 Home
                             </a>
                         </li>
@@ -33,6 +34,7 @@
                                 :to="{ name: 'TheSignin' }"
                                 class="nav-link"
                             >
+                                <b-icon icon="pencil-square"></b-icon>
                                 New Article
                             </router-link>
                         </li>
@@ -41,6 +43,7 @@
                                 :to="{ name: 'TheSignup' }"
                                 class="nav-link"
                             >
+                                <b-icon icon="gear"></b-icon>
                                 Settings
                             </router-link>
                         </li>
@@ -48,7 +51,10 @@
                             <router-link
                                 :to="{ name: 'TheSignup' }"
                                 class="nav-link"
-                            >{{ currentUser.username }}</router-link
+                            >
+                                <b-icon icon="person"></b-icon>
+                                {{ currentUser.username }}
+                            </router-link
                             >
                         </li>
                     </template>
@@ -99,14 +105,6 @@
             isAnonymous() {
                 return this.$store.getters['auth/isAnonymous'];
             },
-        },
-        mounted() {
-        // this.interval = setInterval(() => {
-        //     this.date = new Date();
-        // }, 1000);
-        // this.droppdown = M.Dropdown.init(this.$refs.dropdown, {
-        //     constrainWidth: true,
-        // });
         },
         methods: {
             async logout() {
